@@ -1,1 +1,3 @@
-console.log('Hello World!');
+import { initialize } from './app/mpm';
+
+initialize();

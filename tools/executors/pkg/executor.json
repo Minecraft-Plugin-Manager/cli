@@ -1,0 +1,9 @@
+{
+	"executors": {
+		"pkg": {
+			"implementation": "./impl",
+			"schema": "./schema.json",
+			"description": "Runs `pkg` (to test executors out)."
+		}
+	}
+}
