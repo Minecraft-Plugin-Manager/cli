@@ -1,0 +1,11 @@
+{
+	"$schema": "http://json-schema.org/schema",
+	"type": "object",
+	"cli": "nx",
+	"properties": {
+		"entryFile": {
+			"type": "string",
+			"description": "Entry file of the compiled bundle"
+		}
+	}
+}
