@@ -7,8 +7,12 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "libs": true,
         "node_modules": true,
+        "apps/cli/.eslintrc.json": true,
+        "apps/cli/jest.config.js": true,
+        ".vscode": true,
+        ".github": true,
+        "libs": true,
         "tools": true,
         ".editorconfig": true,
         ".eslintrc.json": true,
@@ -17,16 +21,15 @@
         ".prettierrc": true,
         "jest.config.js": true,
         "jest.preset.js": true,
-        "LICENSE": true,
-        "nx.json": true,
-        "tsconfig.base.json": true,
-        "workspace.json": true,
-        ".github": true,
-        ".vscode": true
+        "LICENSE": true
     },
     "hide-files.files": [
-        "libs",
         "node_modules",
+        "apps/cli/.eslintrc.json",
+        "apps/cli/jest.config.js",
+        ".vscode",
+        ".github",
+        "libs",
         "tools",
         ".editorconfig",
         ".eslintrc.json",
@@ -35,11 +38,6 @@
         ".prettierrc",
         "jest.config.js",
         "jest.preset.js",
-        "LICENSE",
-        "nx.json",
-        "tsconfig.base.json",
-        "workspace.json",
-        ".github",
-        ".vscode"
+        "LICENSE"
     ]
 }
