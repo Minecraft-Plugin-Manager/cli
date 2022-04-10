@@ -13,6 +13,9 @@ const args: any = yargs(process.argv.slice(2))
 				default: null,
 			}),
 	)
-	.boolean('f').argv;
+	.boolean('f')
+	.parse();
+
+
 
 initialize(args);

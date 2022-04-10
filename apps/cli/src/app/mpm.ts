@@ -1,9 +1,8 @@
 import { library } from '@minecraft-plugin-manager/library';
-import { Arguments, CamelCaseKey } from 'yargs';
+import { Core } from './core';
 
-export function initialize<T>(args: {
-	[key in keyof Arguments<T> as key | CamelCaseKey<key>]: Arguments<T>[key];
-}): void {
-	console.log(args.install);
+export function initialize(args): void {
+	new Core();
+	console.log(args);
 	console.log(library());
 }
