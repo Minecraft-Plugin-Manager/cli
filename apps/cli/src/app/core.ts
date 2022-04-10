@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as fs from 'fs';
 import { environment } from "../environments/environment.prod";
 export class Core {
@@ -7,11 +8,29 @@ export class Core {
   pluginFilePath:string = this.serverPath +  "/plugins.json";
   pluginLockFilePath:string = this.serverPath + "/plugins-lock.json"
 
+=======
+import { singleton, container } from 'tsyringe';
+@singleton()
+export class Core {
+>>>>>>> 70ff30e40a0cb606d714ec5abd4ade99878af415
 	public static get instance(): Core {
-		if (!Core.instance_) {
-			Core.instance_ = new Core();
-		}
-		return Core.instance_;
+		return container.resolve(Core);
+	}
+
+	private _plugin: string;
+	public get plugin(): string {
+		return this._plugin;
+	}
+	public set plugin(v: string) {
+		this._plugin = v;
+	}
+
+	private _pluginLock: string;
+	public get pluginLock(): string {
+		return this._pluginLock;
+	}
+	public set pluginLock(v: string) {
+		this._pluginLock = v;
 	}
 
 	constructor() {
