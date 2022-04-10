@@ -1,3 +1,45 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "libs": true,
+        "node_modules": true,
+        "tools": true,
+        ".editorconfig": true,
+        ".eslintrc.json": true,
+        ".gitignore": true,
+        ".prettierignore": true,
+        ".prettierrc": true,
+        "jest.config.js": true,
+        "jest.preset.js": true,
+        "LICENSE": true,
+        "nx.json": true,
+        "tsconfig.base.json": true,
+        "workspace.json": true,
+        ".github": true,
+        ".vscode": true
+    },
+    "hide-files.files": [
+        "libs",
+        "node_modules",
+        "tools",
+        ".editorconfig",
+        ".eslintrc.json",
+        ".gitignore",
+        ".prettierignore",
+        ".prettierrc",
+        "jest.config.js",
+        "jest.preset.js",
+        "LICENSE",
+        "nx.json",
+        "tsconfig.base.json",
+        "workspace.json",
+        ".github",
+        ".vscode"
+    ]
 }

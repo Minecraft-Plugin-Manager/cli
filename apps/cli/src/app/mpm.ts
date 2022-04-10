@@ -1,9 +1,7 @@
 import { library } from '@minecraft-plugin-manager/library';
 import { Arguments, CamelCaseKey } from 'yargs';
+import { InstallCommand } from './commands/install.command';
 
-export function initialize<T>(args: {
-	[key in keyof Arguments<T> as key | CamelCaseKey<key>]: Arguments<T>[key];
-}): void {
-	console.log(args.install);
-	console.log(library());
+export function initialize<T>(args) {
+	new InstallCommand().handler({values:["essentials-x"]});
 }
