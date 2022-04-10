@@ -1,7 +1,7 @@
 export enum ServerType {
+	PAPERMC = 'papermc',
 	BUKKIT = 'bukkit',
 	SPIGOT = 'spigot',
-	PAPERMC = 'papermc',
 	PURPUR = 'purpur',
 	TUINITY = 'tuinity',
 	BUNGEECORD = 'bungeecord',
