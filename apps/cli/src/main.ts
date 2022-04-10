@@ -1,5 +1,6 @@
+import 'reflect-metadata';
 import yargs from 'yargs';
-import { initialize } from './app/mpm';
+import { initialize } from './app/app';
 
 const args: any = yargs(process.argv.slice(2))
 	.help()
@@ -15,7 +16,5 @@ const args: any = yargs(process.argv.slice(2))
 	)
 	.boolean('f')
 	.parse();
-
-
 
 initialize(args);
