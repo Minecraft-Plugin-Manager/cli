@@ -13,6 +13,7 @@ import { initialize } from './app/mpm';
 const args: any = yargs(process.argv.slice(2))
 	.help()
 	.command(['init', 'initialize'], 'Initialize a new plugin')
+<<<<<<< HEAD
   .command(new InstallCommand())
 	// .command(
 	// 	['install [value]', 'i [value]'],
