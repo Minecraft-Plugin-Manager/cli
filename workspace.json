@@ -1,7 +1,8 @@
 {
-  "version": 2,
-  "projects": {
-    "cli": "apps/cli",
-    "library": "libs/library"
-  }
+	"version": 2,
+	"projects": {
+		"api": "apps/api",
+		"cli": "apps/cli",
+		"data-contracts": "libs/data-contracts"
+	}
 }
