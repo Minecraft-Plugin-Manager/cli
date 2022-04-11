@@ -1,10 +1,13 @@
 import 'reflect-metadata';
+
 import yargs from 'yargs';
-import { initialize } from './app/app';
+
+import { App } from './app/app';
+import { InitilializeCommand } from './app/commands/initialize.command';
 
 const args: any = yargs(process.argv.slice(2))
 	.help()
-	.command(['init', 'initialize'], 'Initialize a new plugin')
+	.command(new InitilializeCommand())
 	.command(
 		['install [value]', 'i [value]'],
 		'Install a new plugin',
@@ -17,4 +20,8 @@ const args: any = yargs(process.argv.slice(2))
 	.boolean('f')
 	.parse();
 
-initialize(args);
+try {
+	App.initialize(args);
+} catch (e) {
+	console.trace(e);
+}
