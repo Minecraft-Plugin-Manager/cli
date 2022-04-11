@@ -1,8 +1,7 @@
-import * as inquirer from 'inquirer';
+import { container } from 'tsyringe';
 import { ArgumentsCamelCase, CommandModule } from 'yargs';
-import * as cliSpinners from 'cli-spinners';
+import { ServerManager } from '../managers/server.manager';
 import { BaseCommand } from '../models/base-command';
-import { ServerType } from '../models/enums';
 export class InitilializeCommand extends BaseCommand implements CommandModule {
 	public command = 'init';
 	public aliases = ['initialize'];
@@ -11,22 +10,7 @@ export class InitilializeCommand extends BaseCommand implements CommandModule {
 		return thing;
 	}
 	public async handler(args: ArgumentsCamelCase) {
-		console.clear();
-		const answer = await inquirer.prompt([
-			{
-				type: 'list',
-				name: 'server',
-				message: 'What server jar do you want to install?',
-				choices: [
-					...Object.values(ServerType).map(
-						(name) =>
-							name[0].toUpperCase() +
-							name.substring(1).toLowerCase(),
-					),
-				],
-			},
-		]);
-
-		console.log('answer', answer);
+		await container.resolve(ServerManager).initialize();
+		process.exit(0);
 	}
 }

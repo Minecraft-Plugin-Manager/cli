@@ -1,6 +1,5 @@
 export interface IServerService {
-	getVersions(): string;
-	getLatestBuild(version: string): string;
-	downLoadVersion(version: string): boolean;
-	downLoadVersion(version: string, build: string): boolean;
+	getVersions(): Promise<string[]>;
+	getLatestBuild(version: string): Promise<string>;
+	downLoadVersion(version: string, build: string): Promise<boolean>;
 }
