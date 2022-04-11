@@ -1,6 +1,6 @@
-import { injectable } from 'tsyringe';
 import * as fs from 'fs';
 import * as https from 'https';
+import { injectable } from 'tsyringe';
 
 @injectable()
 export class HttpService {

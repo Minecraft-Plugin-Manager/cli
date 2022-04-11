@@ -1,12 +1,13 @@
+import { injectable } from 'tsyringe';
+
+import { Core } from '../../core';
+import { ServerType } from '../../models/enums';
 import {
 	IServerService,
 	PaperGetServerBuildsDto,
 	PaperGetServerDto,
 } from '../../models/servers';
-import { Core } from '../../core';
-import { ServerType } from '../../models/enums';
 import { HttpService } from '../http.service';
-import { injectable } from 'tsyringe';
 
 @injectable()
 export class PaperMcService implements IServerService {

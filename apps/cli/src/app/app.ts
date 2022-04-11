@@ -1,9 +1,16 @@
 import { container } from 'tsyringe';
+
 import { ServerManager } from './managers/server.manager';
 
-export function initialize(args): void {
-	if (args._.length < 1) {
-		return;
+export class App {
+	public static initialize(args): void {
+		if (args?._?.length < 1) {
+			return;
+		}
+		//
 	}
-	container.resolve(ServerManager).checkForUpdate();
+	public static async exit() {
+		await container.resolve(ServerManager).checkForUpdate();
+		process.exit(0);
+	}
 }

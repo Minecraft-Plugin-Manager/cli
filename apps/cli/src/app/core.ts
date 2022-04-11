@@ -1,4 +1,5 @@
-import { singleton, container } from 'tsyringe';
+import { container,singleton } from 'tsyringe';
+
 import { Server, ServerLock } from './models/config';
 import { ServerType } from './models/enums';
 @singleton()

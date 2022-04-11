@@ -1,6 +1,8 @@
 import 'reflect-metadata';
+
 import yargs from 'yargs';
-import { initialize } from './app/app';
+
+import { App } from './app/app';
 import { InitilializeCommand } from './app/commands/initialize.command';
 
 const args: any = yargs(process.argv.slice(2))
@@ -18,4 +20,8 @@ const args: any = yargs(process.argv.slice(2))
 	.boolean('f')
 	.parse();
 
-initialize(args);
+try {
+	App.initialize(args);
+} catch (e) {
+	console.trace(e);
+}

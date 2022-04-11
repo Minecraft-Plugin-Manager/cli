@@ -1,10 +1,11 @@
+import { injectable } from 'tsyringe';
+
 import {
 	IServerService,
 	PurpurGetServerBuildsDto,
 	PurpurGetServerDto,
 } from '../../models/servers';
 import { HttpService } from '../http.service';
-import { injectable } from 'tsyringe';
 
 @injectable()
 export class PurpurService implements IServerService {

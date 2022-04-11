@@ -1,7 +1,19 @@
 {
 	"root": true,
-	"ignorePatterns": ["**/*"],
-	"plugins": ["@nrwl/nx"],
+	"plugins": [
+		"@nrwl/nx",
+		"@typescript-eslint",
+		"unused-imports",
+		"simple-import-sort",
+		"import"
+	],
+	"rules": {
+		"simple-import-sort/imports": "error",
+		"simple-import-sort/exports": "error",
+		"no-duplicate-imports": "error",
+		"unused-imports/no-unused-imports": "error",
+		"import/no-duplicates": "error"
+	},
 	"overrides": [
 		{
 			"files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

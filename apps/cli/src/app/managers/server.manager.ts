@@ -1,5 +1,6 @@
 import inquirer = require('inquirer');
 import { container } from 'tsyringe';
+
 import { Core } from '../core';
 import { ServerType } from '../models/enums';
 import { IServerService } from '../models/servers';
