@@ -66,8 +66,19 @@ export class ServerManager {
 		const build = await this._service.getLatestBuild(
 			Core.instance.plugin.mcVersion,
 		);
-		if (Number(build) < Number(Core.instance.pluginLock.build)) {
-			this.update();
+		if (Number(build) > Number(Core.instance.pluginLock.build)) {
+			inquirer
+				.prompt({
+					name: 'update',
+					type: 'confirm',
+					message:
+						'A new version of the server is available. Do you want to update?',
+				})
+				.then(async ({ update }) => {
+					if (update) {
+						await this.update();
+					}
+				});
 		}
 	}
 
@@ -82,6 +93,7 @@ export class ServerManager {
 		);
 		if (success) {
 			Core.instance.pluginLock.build = build;
+			console.log('Updated server jar successfully');
 		}
 	}
 }

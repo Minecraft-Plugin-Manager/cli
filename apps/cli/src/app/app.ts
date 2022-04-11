@@ -1,5 +1,6 @@
-import { InitilializeCommand } from './commands/initialize.command';
+import { container } from 'tsyringe';
+import { ServerManager } from './managers/server.manager';
 
 export function initialize(args): void {
-	new InitilializeCommand().handler({ _: [''], values: ['yest'], $0: '' });
+	container.resolve(ServerManager).checkForUpdate();
 }
