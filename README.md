@@ -9,7 +9,7 @@ Command line interpreter for MPM
 
 </h1>
 
-<div style="text-align: center !important;">
+<div align="center">
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Minecraft-Plugin-Manager_cli&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Minecraft-Plugin-Manager_cli)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
