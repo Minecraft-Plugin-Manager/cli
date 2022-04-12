@@ -3,6 +3,7 @@
 	"projects": {
 		"api": "apps/api",
 		"cli": "apps/cli",
-		"data-contracts": "libs/data-contracts"
+		"data-contracts": "libs/data-contracts",
+		"utils": "libs/utils"
 	}
 }

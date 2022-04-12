@@ -17,7 +17,8 @@
 		"paths": {
 			"@minecraft-plugin-manager/data-contracts": [
 				"libs/data-contracts/src/index.ts"
-			]
+			],
+			"@minecraft-plugin-manager/utils": ["libs/utils/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
