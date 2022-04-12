@@ -1,43 +1,44 @@
+import { ServerType } from '@minecraft-plugin-manager/data-contracts';
 import { container,singleton } from 'tsyringe';
 
 import { Server, ServerLock } from './models/config';
-import { ServerType } from './models/enums';
+
 @singleton()
 export class Core {
 	public static get instance(): Core {
 		return container.resolve(Core);
 	}
 
-	private _plugin: Server;
-	public get plugin(): Server {
-		if (!this._plugin) {
-			this._plugin = {
+	private _server: Server;
+	public get server(): Server {
+		if (!this._server) {
+			this._server = {
 				mcVersion: '1.18',
 				serverType: ServerType.PAPERMC,
-				plugins: {},
+				plugins: new Map(),
 			};
 		}
 
-		return this._plugin;
+		return this._server;
 	}
-	public set plugin(v: Server) {
-		this._plugin = v;
+	public set server(v: Server) {
+		this._server = v;
 	}
 
-	private _pluginLock: ServerLock;
-	public get pluginLock(): ServerLock {
-		if (!this._pluginLock) {
-			this._pluginLock = {
+	private _serverLock: ServerLock;
+	public get serverLock(): ServerLock {
+		if (!this._serverLock) {
+			this._serverLock = {
 				mcVersion: '1.18',
 				build: '280',
 				serverType: ServerType.PAPERMC,
 				plugins: [],
 			};
 		}
-		return this._pluginLock;
+		return this._serverLock;
 	}
-	public set pluginLock(v: ServerLock) {
-		this._pluginLock = v;
+	public set serverLock(v: ServerLock) {
+		this._serverLock = v;
 	}
 
 	constructor() {

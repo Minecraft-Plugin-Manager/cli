@@ -1,7 +1,7 @@
+import { ServerType } from '@minecraft-plugin-manager/data-contracts';
 import { injectable } from 'tsyringe';
 
 import { Core } from '../../core';
-import { ServerType } from '../../models/enums';
 import {
 	IServerService,
 	PaperGetServerBuildsDto,
@@ -12,7 +12,7 @@ import { HttpService } from '../http.service';
 @injectable()
 export class PaperMcService implements IServerService {
 	public get serverUrl(): string {
-		switch (Core.instance.plugin.serverType) {
+		switch (Core.instance.server.serverType) {
 			case ServerType.PAPERMC:
 				return 'https://papermc.io/api/v2/projects/paper';
 			case ServerType.WATERFALL:

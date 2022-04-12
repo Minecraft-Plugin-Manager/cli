@@ -1,12 +1,6 @@
-import { IPlugin } from '../plugins/plugin';
-import { ServerType } from './server-type';
-
-export interface IServer {
-	buildVersion: number;
-	mcVersion: string;
-	serverType: ServerType;
-	plugins: IPlugin[];
-}
+import { IPlugin } from '../plugins/plugin.interface';
+import { IServer } from './server.interface';
+import { ServerType } from './server-type.enum';
 
 export class Server implements IServer {
 	constructor(

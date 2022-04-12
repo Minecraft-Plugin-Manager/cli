@@ -1,7 +1,7 @@
-import { ServerType } from '../enums';
+import { ServerType } from '@minecraft-plugin-manager/data-contracts';
 
 export class Server {
 	public mcVersion: string;
 	public serverType: ServerType;
-	public plugins: { [key: string]: string };
+	public plugins: Map<string, string>;
 }

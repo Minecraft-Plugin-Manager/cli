@@ -1,7 +1,8 @@
-import { IPlugin } from 'libs/data-contracts/src/lib/plugins/plugin';
-import { IServer } from 'libs/data-contracts/src/lib/servers/server';
-import { ArrayUtils } from 'libs/common/utils/ArrayUtils';
-import { ObjectUtils } from 'libs/common/utils/ObjectUtils';
+import { IPlugin } from '@minecraft-plugin-manager/data-contracts';
+import { ArrayUtils } from '@minecraft-plugin-manager/utils';
+import { container } from 'tsyringe';
+
+import { Core } from '../../../core';
 
 export interface IPluginVersionManager {
 	getPluginVersionsFromPluginName(pluginName: string): Promise<string[]>;
@@ -13,7 +14,11 @@ export class PluginVersionManager implements IPluginVersionManager {
 	private readonly mcVersion: string;
 	private readonly plugins: IPlugin[];
 
-	constructor(server: IServer) {
+  private readonly core = container.resolve(Core);
+
+	constructor() {
+    const server = this.core.serverLock;
+
 		this.mcVersion = server.mcVersion;
 		this.plugins = server.plugins;
 	}
@@ -39,11 +44,7 @@ export class PluginVersionManager implements IPluginVersionManager {
 	): Promise<string[]> {
 		const plugin: IPlugin = await this.getPluginByName(pluginName);
 
-		if (ObjectUtils.isDefined(plugin)) {
-			return plugin.compatibleMcVersions;
-		}
-
-		return [];
+		return plugin?.compatibleMcVersions ?? [];
 	}
 
 	/**
@@ -57,11 +58,7 @@ export class PluginVersionManager implements IPluginVersionManager {
 	): Promise<boolean> {
 		const plugin: IPlugin = await this.getPluginByName(pluginName);
 
-		if (ObjectUtils.isDefined(plugin)) {
-			return plugin.compatibleMcVersions.includes(this.mcVersion);
-		}
-
-		return false;
+		return plugin?.compatibleMcVersions.includes(this.mcVersion) ?? false;
 	}
 
 	/**
@@ -71,12 +68,6 @@ export class PluginVersionManager implements IPluginVersionManager {
 	 * @returns {Promise<boolean>} true if the plugin is compatible
 	 */
 	public async isPluginCompatible(plugin: IPlugin): Promise<boolean> {
-		const compatibleMcVersions: string[] = plugin.compatibleMcVersions;
-
-		if (ArrayUtils.isNotEmpty(compatibleMcVersions)) {
-			return compatibleMcVersions.includes(this.mcVersion);
-		}
-
-		return false;
+			return plugin?.compatibleMcVersions.includes(this.mcVersion) ?? false;
 	}
 }

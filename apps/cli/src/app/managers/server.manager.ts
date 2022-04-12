@@ -1,14 +1,14 @@
+import { ServerType } from '@minecraft-plugin-manager/data-contracts';
 import inquirer = require('inquirer');
 import { container } from 'tsyringe';
 
 import { Core } from '../core';
-import { ServerType } from '../models/enums';
 import { IServerService } from '../models/servers';
 import { PaperMcService, PurpurService } from '../services/servers';
 
 export class ServerManager {
 	private get _service(): IServerService {
-		switch (Core.instance.plugin.serverType) {
+		switch (Core.instance.server.serverType) {
 			case ServerType.PAPERMC:
 			case ServerType.VELOCITY:
 			case ServerType.WATERFALL:
@@ -25,17 +25,10 @@ export class ServerManager {
 				type: 'list',
 				name: 'serverType',
 				message: 'What server jar do you want to install?',
-				choices: [
-					...Object.values(ServerType).map(
-						(name) =>
-							name[0].toUpperCase() +
-							name.substring(1).toLowerCase(),
-					),
-				],
+				choices: Object.values(ServerType),
 			},
 		]);
-		Core.instance.plugin.serverType =
-			serverType.toLowerCase() as ServerType;
+		Core.instance.server.serverType = serverType as ServerType;
 		const versions = await this._service.getVersions();
 
 		const { serverVersion } = await inquirer.prompt([
@@ -47,10 +40,10 @@ export class ServerManager {
 				choices: versions,
 			},
 		]);
-		Core.instance.plugin.mcVersion = serverVersion;
-		Core.instance.pluginLock.mcVersion = serverVersion;
+		Core.instance.server.mcVersion = serverVersion;
+		Core.instance.serverLock.mcVersion = serverVersion;
 		const build = await this._service.getLatestBuild(serverVersion);
-		Core.instance.pluginLock.build = build;
+		Core.instance.serverLock.build = build;
 		const success = await this._service.downLoadVersion(
 			serverVersion,
 			build,
@@ -65,9 +58,9 @@ export class ServerManager {
 
 	public async checkForUpdate() {
 		const build = await this._service.getLatestBuild(
-			Core.instance.plugin.mcVersion,
+			Core.instance.server.mcVersion,
 		);
-		if (Number(build) > Number(Core.instance.pluginLock.build)) {
+		if (Number(build) > Number(Core.instance.serverLock.build)) {
 			inquirer
 				.prompt({
 					name: 'update',
@@ -85,15 +78,15 @@ export class ServerManager {
 
 	public async update() {
 		const build = await this._service.getLatestBuild(
-			Core.instance.plugin.mcVersion,
+			Core.instance.server.mcVersion,
 		);
-		Core.instance.pluginLock.build = build;
+		Core.instance.serverLock.build = build;
 		const success = await this._service.downLoadVersion(
-			Core.instance.plugin.mcVersion,
+			Core.instance.server.mcVersion,
 			build,
 		);
 		if (success) {
-			Core.instance.pluginLock.build = build;
+			Core.instance.serverLock.build = build;
 			console.log('Updated server jar successfully');
 		}
 	}

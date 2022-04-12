@@ -7,7 +7,7 @@ export class ArrayUtils {
 	 * @returns {boolean} true if the array is empty
 	 */
 	public static isEmpty(array: unknown[]): boolean {
-		return array === null || array === undefined || array.length === 0;
+		return !!array?.length;
 	}
 
 	/**
